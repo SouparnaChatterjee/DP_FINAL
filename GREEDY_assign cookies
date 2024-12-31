@@ -1,0 +1,22 @@
+class Solution {
+public:
+    int findContentChildren(vector<int>& g, vector<int>& s) {
+    sort(g.begin(), g.end());
+    sort(s.begin(), s.end());
+    int size=0, greed=0;
+    int satisfied=0;
+    while(size<s.size() && greed<g.size())
+    {
+        if(s[size]>=g[greed])
+        {
+          satisfied++;
+          size++; greed++;
+        }
+        else
+        {
+            size++;
+        }
+    }
+    return satisfied;
+    }
+};
