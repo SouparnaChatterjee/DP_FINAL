@@ -1,0 +1,19 @@
+class Solution {
+public:
+    bool isSubsequence(string s, string t) {
+    //all characters of s have to be present in t ie s has to be a subsequence of t
+    if(s.size()>t.size())   return false;
+    return subsequenceHelper(s,t,0,0);
+    }
+private:
+    bool subsequenceHelper(string& s, string& t, int s_index, int t_index)
+    {
+        if(s_index==s.size()) return true;
+        //not returned in s, so doesnt match, but t reaches end
+        if(t_index==t.size()) return false;
+        if(s[s_index]==t[t_index])
+        {return subsequenceHelper(s,t,s_index+1, t_index+1);}
+        else
+        return subsequenceHelper(s,t, s_index, t_index+1);
+    }
+};
